@@ -14,4 +14,28 @@ body {
 	background-position: center;
 	background-size: cover;
 	color: white;
+	font-size: 1rem;
+}
+
+.underline-animate {
+	position: relative;
+}
+
+.underline-animate:after {
+	content: '';
+	position: absolute;
+	left: 15%;
+	bottom: 0.5em;
+	height: 0.2em;
+	width: 0%;
+	transition: width 0.2s ease;
+	background-color: orange;
+}
+
+.underline-animate:hover:after {
+	width: 70%;
+}
+
+.markdown h1 h2 h3 h4 h5 h6 {
+	font-weight: 700;
 }
