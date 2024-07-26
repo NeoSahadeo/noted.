@@ -1,5 +1,19 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { homeURL } from '$lib/store';
 	let h: number;
+	let action: string;
+	onMount(() => {
+		switch (document.location.origin) {
+			case 'https://neosahadeo.github.io':
+				action =
+					'https://neosahadeo.github.io/noted./query';
+				homeURL.set('https://neosahadeo.github.io/noted.');
+			default:
+				action = 'http://localhost:5173/query';
+				homeURL.set('http://localhost:5173');
+		}
+	});
 </script>
 
 <div class="w-full" style="height: {h}px"></div>
@@ -8,15 +22,15 @@
 	class="fixed top-0 w-full px-2 py-2 flex flex-row items-center backdrop-blur-3xl bg-red-500 bg-opacity-20 z-50"
 >
 	<a
-		href="./"
-		class="px-3 py-2 rounded font-semibold sm:block hidden underline-animate"
+		href={$homeURL}
+		class="px-3 py-2 rounded font-semibold sm:block hidden underline-animate text-white hover:text-white"
 	>
 		noted.
 	</a>
 	<form
 		class="sm:ml-4 ml-0 flex flex-row gap-2"
 		method="get"
-		action="./query"
+		{action}
 	>
 		<input
 			class="w-full backdrop-blur-3xl bg-opacity-50 bg-red-500 px-3 py-1 rounded hover:bg-orange-600"
@@ -43,6 +57,22 @@
 			<span class="sm:block hidden"> Search </span>
 		</button>
 	</form>
+	<nav class="ml-auto md:block hidden">
+		<ul class="flex flex-row gap-5">
+			<li>
+				<a
+					class="link font-semibold"
+					href={$homeURL + '/query?q='}>Latest</a
+				>
+			</li>
+			<li>
+				<a
+					class="link font-semibold"
+					href={$homeURL + '/categories'}>Categories</a
+				>
+			</li>
+		</ul>
+	</nav>
 </header>
 
 <style>

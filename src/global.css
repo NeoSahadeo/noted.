@@ -5,10 +5,27 @@
 * {
 	box-sizing: border-box;
 	margin: 0px;
+	transition: 0.1s;
+}
+
+::-moz-selection {
+	color: orange;
+	background-color: #000000dd;
+	-webkit-backdrop-filter: blur(100em);
+	backdrop-filter: blur(100em);
+}
+
+::selection {
+	color: orange;
+	background-color: #000000dd;
+	-webkit-backdrop-filter: blur(100em);
+	backdrop-filter: blur(100em);
 }
 
 body {
-	min-height: 100dvh;
+	display: flex;
+	flex-direction: column;
+	height: 100dvh;
 	background-image: url('./lib/images/background.png');
 	background-repeat: no-repeat;
 	background-position: center;
@@ -61,6 +78,8 @@ h6 {
 
 .markdown tr {
 	position: relative;
+	-webkit-backdrop-filter: blur(4em);
+	backdrop-filter: blur(4em);
 }
 
 .markdown td {
@@ -121,8 +140,107 @@ h6 {
 	height: 100%;
 	-webkit-backdrop-filter: blur(4em);
 	backdrop-filter: blur(4em);
-	opacity: 0.3;
+	opacity: 0.5;
 	z-index: -1;
 	background-color: red;
 	border-radius: 0.3em;
+}
+
+.markdown pre {
+	padding: 1em 1em;
+	overflow: auto;
+	background-color: #000000d6;
+	-webkit-backdrop-filter: blur(4em);
+	backdrop-filter: blur(4em);
+}
+
+.button-primary,
+.button-tertiary,
+.button-disabled,
+.button-secondary {
+	padding: 0.4em 0.7em;
+	border-radius: 0.3em;
+	font-weight: 700;
+	text-wrap: nowrap;
+}
+
+.button-primary:hover,
+.button-tertiary:hover,
+.button-secondary:hover {
+	background-color: orange;
+}
+
+.button-primary {
+	background-color: rgb(250 0 48);
+}
+
+.button-secondary {
+	background-color: rgb(220, 38, 38);
+}
+
+.button-tertiary {
+	background-color: #d95611;
+}
+
+.button-disabled {
+	/* -webkit-backdrop-filter: blur(100em); */
+	/* backdrop-filter: blur(100em); */
+	background-color: black;
+	cursor: not-allowed;
+	text-decoration: line-through;
+	color: #656565;
+}
+
+.button-special {
+	-webkit-backdrop-filter: blur(3em);
+	backdrop-filter: blur(3em);
+	background-color: #ffffff0f;
+	padding: 1em 1em;
+	border-radius: 0.4em;
+	font-weight: 700;
+	font-style: italic;
+	text-wrap: nowrap;
+	color: white;
+}
+
+.button-special:hover {
+	background-color: #ffffff0f;
+	outline: 1px solid white;
+	color: white;
+}
+
+.link {}
+
+.link:hover {
+	color: orange;
+}
+
+a:hover {
+	cursor: pointer;
+}
+
+.rotate {
+	animation-name: rotate360;
+	animation-duration: 9s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes rotate360 {
+	from {
+		rotate: 0deg;
+	}
+
+	to {
+		rotate: 360deg;
+	}
+}
+
+.glass {
+	-webkit-backdrop-filter: blur(2em);
+	backdrop-filter: blur(2em);
+	padding: 1em 1em;
+	border-radius: 1em;
+	box-shadow: 0.2em 0.2em 0.4em 0em #000000df;
+	border: 1px solid #b5b5b517;
 }

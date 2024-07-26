@@ -2,10 +2,11 @@
 	import { onMount } from 'svelte';
 	import hljs from 'highlight.js';
 	import '../global.css';
-	import '$lib/css/summercamp.css';
+	import '$lib/css/neoscode.css';
 	import Header from '$lib/components/header.svelte';
 
-	const calculateHeaderSize = ({
+	let style: string;
+	const calculateHFontSize = ({
 		baseSize = 3,
 		scaleSize = 2
 	}: {
@@ -28,30 +29,46 @@
 		};
 		const scaleEquation = (headerLevel: number) => {
 			// ( 2 - (10 / 6 )) = 1/3 = 0.3333
-			// value is calculate do h6 will equal 1rem
+			// value is calculated so h6 will equal 1rem
 			if (scaleSize != 2) {
 				return `${baseSize - headerLevel * (scaleSize - 10 / 6)}rem`;
 			}
 			return `${baseSize - headerLevel * 0.3333}rem`;
 		};
-		const queryMe = (header: string) =>
-			document.querySelectorAll(`.markdown ${header}`);
-		[
-			...queryMe('h1'),
-			...queryMe('h2'),
-			...queryMe('h3'),
-			...queryMe('h4'),
-			...queryMe('h5'),
-			...queryMe('h6')
-		].forEach((e: HTMLElement & any) => {
-			e.style.fontSize = scaleEquation(
-				HeaderLevels[e.tagName]
-			);
-		});
+		const [h1, h2, h3, h4, h5, h6] = [
+			scaleEquation(1),
+			scaleEquation(2),
+			scaleEquation(3),
+			scaleEquation(4),
+			scaleEquation(5),
+			scaleEquation(6)
+		];
+		style += `<style>
+		h1 { font-size: ${h1} }
+		h2 { font-size: ${h2} }
+		h3 { font-size: ${h3} }
+		h4 { font-size: ${h4} }
+		h5 { font-size: ${h5} }
+		h6 { font-size: ${h6} }
+		<style>`;
+		// const queryMe = (header: string) =>
+		// 	document.querySelectorAll(`${header}`);
+		// [
+		// 	...queryMe('h1'),
+		// 	...queryMe('h2'),
+		// 	...queryMe('h3'),
+		// 	...queryMe('h4'),
+		// 	...queryMe('h5'),
+		// 	...queryMe('h6')
+		// ].forEach((e: HTMLElement & any) => {
+		// 	e.style.fontSize = scaleEquation(
+		// 		HeaderLevels[e.tagName]
+		// 	);
+		// });
 	};
 
 	function setFontSize() {
-		calculateHeaderSize();
+		calculateHFontSize();
 	}
 
 	onMount(() => {
@@ -61,4 +78,7 @@
 </script>
 
 <Header />
-<slot />
+<div class="hidden">
+	{@html style}
+</div>
+<slot class="contents" />
