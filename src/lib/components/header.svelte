@@ -5,7 +5,7 @@
 <div class="w-full" style="height: {h}px"></div>
 <header
 	bind:clientHeight={h}
-	class="fixed top-0 w-full px-2 py-2 flex flex-row items-center backdrop-blur-3xl bg-red-500 bg-opacity-20"
+	class="fixed top-0 w-full px-2 py-2 flex flex-row items-center backdrop-blur-3xl bg-red-500 bg-opacity-20 z-50"
 >
 	<a
 		href="./"

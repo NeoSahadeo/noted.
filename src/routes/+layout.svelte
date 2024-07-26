@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import hljs from 'highlight.js';
 	import '../global.css';
+	import '$lib/css/summercamp.css';
 	import Header from '$lib/components/header.svelte';
 
 	const calculateHeaderSize = ({
@@ -54,6 +56,7 @@
 
 	onMount(() => {
 		setFontSize();
+		hljs.highlightAll();
 	});
 </script>
 
