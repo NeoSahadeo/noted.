@@ -1,3 +1,4 @@
 import { writable } from 'svelte/store';
 
-export const homeURL = writable('');
+// replaced with base from $app/paths
+// export const homeURL = writable('');

@@ -1,19 +1,15 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { homeURL } from '$lib/store';
 	import { base } from '$app/paths';
 	let h: number;
 	let action: string;
-	console.debug(base);
 	onMount(() => {
 		switch (document.location.origin) {
 			case 'https://neosahadeo.github.io':
 				action =
 					'https://neosahadeo.github.io/noted./query';
-				homeURL.set('https://neosahadeo.github.io/noted.');
 			default:
 				action = 'http://localhost:5173/query';
-				homeURL.set('http://localhost:5173');
 		}
 	});
 </script>
@@ -24,7 +20,7 @@
 	class="fixed top-0 w-full px-2 py-2 flex flex-row items-center backdrop-blur-3xl bg-red-500 bg-opacity-20 z-50"
 >
 	<a
-		href={$homeURL}
+		href={base}
 		class="px-3 py-2 rounded font-semibold sm:block hidden underline-animate text-white hover:text-white"
 	>
 		noted.
@@ -64,13 +60,13 @@
 			<li>
 				<a
 					class="link font-semibold"
-					href={$homeURL + '/query?q='}>Latest</a
+					href={base + '/query?q='}>Latest</a
 				>
 			</li>
 			<li>
 				<a
 					class="link font-semibold"
-					href={$homeURL + '/categories'}>Categories</a
+					href={base + '/categories'}>Categories</a
 				>
 			</li>
 		</ul>

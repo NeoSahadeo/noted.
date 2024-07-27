@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { parseMarkdown } from '$lib/utils/markdown.svelte';
-	import { homeURL } from '$lib/store';
+	import { base } from '$app/paths';
 	const content1 = parseMarkdown(`
 
-# it's <span>noted.</span><a href="${$homeURL + '/screensaver/dvd'}">📀</a>
+# it's <span>noted.</span><a href="${base + '/screensaver/dvd'}">📀</a>
 
 The site contains useful information I've learnt and hopefully you might find useful. I've tried to make everything as interactive as possible.
 
@@ -18,19 +18,13 @@ Everything on this site is either open-source or created by me. Feel free to \`
 	</section>
 	<div class="flex flex-col gap-3 w-fit mt-5">
 		<div class="">
-			<a
-				href={$homeURL + '/query?='}
-				class="button-primary"
-			>
+			<a href={base + '/query?='} class="button-primary">
 				Latest
 			</a>
-			<a
-				href={$homeURL + '/categories'}
-				class="button-primary"
-			>
+			<a href={base + '/categories'} class="button-primary">
 				Categories
 			</a>
-			<a href={$homeURL + '/about'} class="button-primary">
+			<a href={base + '/about'} class="button-primary">
 				About
 			</a>
 		</div>

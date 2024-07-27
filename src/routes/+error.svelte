@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { parseMarkdown } from '$lib/utils/markdown.svelte';
-	import { homeURL } from '$lib/store';
+	import { base } from '$app/paths';
 	const content1 = parseMarkdown(`
 ## AHHH!
 
@@ -17,15 +17,14 @@
 	</article>
 	<img
 		alt="Giggle Shitter Spinning around in a circle"
-		src={$homeURL + '/giggleshitter.png'}
+		src={base + '/giggleshitter.png'}
 		class="sm:w-40 w-24 rotate"
 	/>
 	<div class="flex flex-col w-min gap-2">
 		<span class="flex flex-row gap-2">
-			<a href={$homeURL} class="button-special">Go Home</a>
-			<a
-				href={$homeURL + '/query?q='}
-				class="button-special">Browse</a
+			<a href={base} class="button-special">Go Home</a>
+			<a href={base + '/query?q='} class="button-special"
+				>Browse</a
 			>
 		</span>
 		<a

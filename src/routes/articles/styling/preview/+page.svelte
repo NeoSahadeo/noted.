@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { homeURL } from '$lib/store';
+	import { base } from '$app/paths';
 	import { parseMarkdown } from '$lib/utils/markdown.svelte';
 	const markdown = parseMarkdown(`
 # Markdown syntax guide
@@ -42,7 +42,7 @@ _You **can** combine them_
 
 ## Images
 
-![This is an alt text.](${homeURL}/temp.png "This is a sample image.")
+![This is an alt text.](${base}/temp.png "This is a sample image.")
 
 ## Links
 
