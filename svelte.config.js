@@ -9,7 +9,8 @@ const config = {
 			assets: 'build',
 			fallback: undefined,
 			precompress: false,
-			strict: true
+			strict: true,
+			fallback: '404.html'
 		})
 	},
 
