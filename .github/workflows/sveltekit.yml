@@ -54,7 +54,7 @@ jobs:
         run: pnpm run build
 
       - name: Move 404 Page
-        run: mv ./build/404/index.html ./404.html
+        run: mv ./build/404/index.html ./buid/404.html
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3.0.1
