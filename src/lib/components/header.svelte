@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { homeURL } from '$lib/store';
+	import { base } from '$app/paths';
 	let h: number;
 	let action: string;
+	console.debug(base);
 	onMount(() => {
 		switch (document.location.origin) {
 			case 'https://neosahadeo.github.io':
