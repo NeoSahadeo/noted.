@@ -30,7 +30,7 @@ jobs:
 
       - name: Build
         env:
-          BASE_PATH: '/${{ https://github.com/NeoSahadeo/noted. }}'
+          BASE_PATH: '/${{ github.event.repository.name }}'
         run: pnpm run build
 
       - name: Upload Artifacts
