@@ -1,17 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
 	let h: number;
-	let action: string;
-	onMount(() => {
-		switch (document.location.origin) {
-			case 'https://neosahadeo.github.io':
-				action =
-					'https://neosahadeo.github.io/noted./query';
-			default:
-				action = 'http://localhost:5173/query';
-		}
-	});
 </script>
 
 <div class="w-full" style="height: {h}px"></div>
@@ -28,7 +17,7 @@
 	<form
 		class="sm:ml-4 ml-0 flex flex-row gap-2"
 		method="get"
-		{action}
+		action={base + '/query'}
 	>
 		<input
 			class="w-full backdrop-blur-3xl bg-opacity-50 bg-red-500 px-3 py-1 rounded hover:bg-orange-600"

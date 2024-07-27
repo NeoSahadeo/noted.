@@ -11,7 +11,10 @@ const config = {
 			precompress: false,
 			strict: true,
 			fallback: '404.html'
-		})
+		}),
+		paths: {
+			base: process.argv.includes('dev') ? '' : '/noted.'
+		}
 	},
 
 	preprocess: vitePreprocess()
